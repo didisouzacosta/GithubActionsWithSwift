@@ -2,18 +2,21 @@ name: Swift
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: xcodebuild -project "GithubActionsWithSwift.xcodeproj" -scheme "GithubActionsWithSwift" -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
+
+        # run: swift build -v
+      - name: Run tests
+        run: xcodebuild clean test -project "GithubActionsWithSwift.xcodeproj" -scheme "GithubActionsWithSwift" -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest"
+        # run: swift test -v

@@ -1,5 +1,8 @@
 name: Swift
 
+env:
+  PROJECT: GithubActionsWithSwift
+
 on:
   push:
     branches: [master]
@@ -14,9 +17,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build
-        run: xcodebuild -project "GithubActionsWithSwift.xcodeproj" -scheme "GithubActionsWithSwift" -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
+        run: echo $PROJECT".xcodeproj"
+        run: xcodebuild -project $PROJECT".xcodeproj" -scheme $PROJECT -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
 
-        # run: swift build -v
       - name: Run tests
-        # run: xcodebuild clean test -project "GithubActionsWithSwift.xcodeproj" -scheme "GithubActionsWithSwift" -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest"
-        run: swift test -v
+        run: xcodebuild clean test -project $PROJECT".xcodeproj" -scheme $PROJECT -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest"

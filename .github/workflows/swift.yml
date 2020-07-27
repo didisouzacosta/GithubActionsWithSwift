@@ -29,6 +29,17 @@ jobs:
       - name: Pod install
         run: pod install
 
+      - name: Build
+        run: xcodebuild -workspace $XCODE_WORKSPACE -scheme $TARGET -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
+
+      - name: Run tests
+        run: xcodebuild clean test -workspace $XCODE_WORKSPACE -scheme $TARGET -destination "platform=iOS Simulator,name=$SIMULATOR,OS=latest"
+
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
       - name: GitHub Action for SwiftLint
         uses: norio-nomura/action-swiftlint@3.1.0
 
@@ -41,9 +52,3 @@ jobs:
         uses: norio-nomura/action-swiftlint@3.1.0
         env:
           DIFF_BASE: ${{ github.base_ref }}
-
-      - name: Build
-        run: xcodebuild -workspace $XCODE_WORKSPACE -scheme $TARGET -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
-
-      - name: Run tests
-        run: xcodebuild clean test -workspace $XCODE_WORKSPACE -scheme $TARGET -destination "platform=iOS Simulator,name=$SIMULATOR,OS=latest"

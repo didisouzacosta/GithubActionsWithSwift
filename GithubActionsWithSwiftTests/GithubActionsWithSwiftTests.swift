@@ -17,7 +17,6 @@ class GithubActionsWithSwiftTests: XCTestCase {
         let secondNumber = 13
         let sum = firstNumber + secondNumber
         let expectedResult = 23
-        
         XCTAssertEqual(sum, expectedResult)
     }
 

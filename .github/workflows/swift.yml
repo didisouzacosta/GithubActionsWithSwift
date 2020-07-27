@@ -2,7 +2,9 @@ name: Swift
 
 env:
   PROJECT: GithubActionsWithSwift
-  XCODE_PROJECT: $PROJECT + ".xcodeproj"
+  XCODE_PROJECT: GithubActionsWithSwift.xcodeproj
+  SIMULATOR: iPhone 11 Pro Max
+  XCODE: Xcode_11.5
 
 on:
   push:
@@ -17,8 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Force Xcode 11
+        run: sudo xcode-select -switch /Applications/$XCODE.app
+
       - name: Build
-        run: echo $PROJECT
-        # run: xcodebuild -project $PROJECT".xcodeproj" -scheme $PROJECT -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
-      # - name: Run tests
-      # run: xcodebuild clean test -project $PROJECT".xcodeproj" -scheme $PROJECT -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest"
+        run: xcodebuild -project $XCODE_PROJECT -scheme $PROJECT -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
+
+      - name: Run tests
+        run: xcodebuild clean test -project $XCODE_PROJECT -scheme $PROJECT -destination "platform=iOS Simulator,name=$SIMULATOR,OS=latest"

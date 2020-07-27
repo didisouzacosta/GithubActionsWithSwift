@@ -2,7 +2,7 @@ name: Swift
 
 env:
   PROJECT: GithubActionsWithSwift
-  XCODE_PROJECT: $PROJECT'.xcodeproj'
+  XCODE_PROJECT: $PROJECT".xcodeproj"
 
 on:
   push:

@@ -2,6 +2,7 @@ name: Swift
 
 env:
   PROJECT: GithubActionsWithSwift
+  XCODE_PROJECT: $PROJECT'.xcodeproj'
 
 on:
   push:
@@ -17,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build
-        run: echo $PROJECT".xcodeproj"
+        run: echo $XCODE_PROJECT
         # run: xcodebuild -project $PROJECT".xcodeproj" -scheme $PROJECT -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
       # - name: Run tests
       # run: xcodebuild clean test -project $PROJECT".xcodeproj" -scheme $PROJECT -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest"

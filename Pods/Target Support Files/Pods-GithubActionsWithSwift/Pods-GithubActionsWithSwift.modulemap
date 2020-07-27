@@ -1,0 +1,6 @@
+framework module Pods_GithubActionsWithSwift {
+  umbrella header "Pods-GithubActionsWithSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

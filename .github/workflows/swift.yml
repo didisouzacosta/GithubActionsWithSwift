@@ -1,7 +1,7 @@
 name: Swift
 
 env:
-  PROJECT: GithubActionsWithSwift
+  TARGET: GithubActionsWithSwift
   XCODE_PROJECT: GithubActionsWithSwift.xcodeproj
   SIMULATOR: iPhone 11 Pro Max
 
@@ -22,7 +22,7 @@ jobs:
         run: sudo xcode-select -switch /Applications/Xcode_11.5.app
 
       - name: Build
-        run: xcodebuild -project $XCODE_PROJECT -scheme $PROJECT -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
+        run: xcodebuild -project $XCODE_PROJECT -scheme $TARGET -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
 
       - name: Run tests
-        run: xcodebuild clean test -project $XCODE_PROJECT -scheme $PROJECT -destination "platform=iOS Simulator,name=$SIMULATOR,OS=latest"
+        run: xcodebuild clean test -project $XCODE_PROJECT -scheme $TARGET -destination "platform=iOS Simulator,name=$SIMULATOR,OS=latest"

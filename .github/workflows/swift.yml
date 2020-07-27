@@ -19,8 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Force Xcode 11
-        run: sudo xcode-select -switch /Applications/$XCODE.app
+      - name: Force Xcode 11.5
+        run: sudo xcode-select -switch "/Applications/" $XCODE ".app"
 
       - name: Build
         run: xcodebuild -project $XCODE_PROJECT -scheme $PROJECT -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO

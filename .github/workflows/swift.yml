@@ -2,7 +2,7 @@ name: Swift
 
 env:
   TARGET: GithubActionsWithSwift
-  XCODE_PROJECT: GithubActionsWithSwift.xcworkspace
+  XCODE_WORKSPACE: GithubActionsWithSwift.xcworkspace
   SIMULATOR: iPhone 11 Pro Max
 
 on:
@@ -18,11 +18,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Pod install
+        run: pod install
+
       - name: Force Xcode 11
         run: sudo xcode-select -switch /Applications/Xcode_11.5.app
 
       - name: Build
-        run: xcodebuild -project $XCODE_PROJECT -scheme $TARGET -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
+        run: xcodebuild -workspace $XCODE_WORKSPACE -scheme $TARGET -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
 
       - name: Run tests
-        run: xcodebuild clean test -project $XCODE_PROJECT -scheme $TARGET -destination "platform=iOS Simulator,name=$SIMULATOR,OS=latest"
+        run: xcodebuild clean test -workspace $XCODE_WORKSPACE -scheme $TARGET -destination "platform=iOS Simulator,name=$SIMULATOR,OS=latest"

@@ -18,7 +18,7 @@ jobs:
 
       - name: Build
         run: echo $PROJECT".xcodeproj"
-        run: xcodebuild -project $PROJECT".xcodeproj" -scheme $PROJECT -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
 
+        # run: xcodebuild -project $PROJECT".xcodeproj" -scheme $PROJECT -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
       - name: Run tests
-        run: xcodebuild clean test -project $PROJECT".xcodeproj" -scheme $PROJECT -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest"
+        # run: xcodebuild clean test -project $PROJECT".xcodeproj" -scheme $PROJECT -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest"

@@ -2,7 +2,7 @@ name: Swift
 
 env:
   TARGET: GithubActionsWithSwift
-  XCODE_PROJECT: GithubActionsWithSwift.xcodeproj
+  XCODE_PROJECT: GithubActionsWithSwift.xcworkspace
   SIMULATOR: iPhone 11 Pro Max
 
 on:

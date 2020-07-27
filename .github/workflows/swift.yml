@@ -18,11 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Select Xcode 11.5
+        run: sudo xcode-select -switch /Applications/Xcode_11.5.app
+
       - name: Pod install
         run: pod install
-
-      - name: Force Xcode 11
-        run: sudo xcode-select -switch /Applications/Xcode_11.5.app
 
       - name: Build
         run: xcodebuild -workspace $XCODE_WORKSPACE -scheme $TARGET -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO

@@ -1,7 +1,11 @@
 # GithubActionsWithSwift
 
-Projeto de estudo para implementar o processo de integração contínua utilizando Github Actions em um projeto iOS com Swift 5 contando com testes unitários e swift lint.
+Projeto de estudo para implementar o processo de integração contínua utilizando Github Actions com um projeto iOS com Swift
+
+**Gerenciador de dependências**
+
+- [Cocoa Pods](https://cocoapods.org/)
 
 **Dependências**
 
-- Swift Lint
+- [Swift Lint](https://github.com/realm/SwiftLint)

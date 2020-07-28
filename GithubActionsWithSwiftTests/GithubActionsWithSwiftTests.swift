@@ -14,9 +14,9 @@ class GithubActionsWithSwiftTests: XCTestCase {
 
     func testSumTwoNumbers() throws {
         let firstNumber = 10
-        let secondNumber = 13
+        let secondNumber = 14
         let sum = firstNumber + secondNumber
-        let expectedResult = 23
+        let expectedResult = 24
         XCTAssertEqual(sum, expectedResult)
     }
 

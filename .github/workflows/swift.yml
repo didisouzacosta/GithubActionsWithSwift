@@ -34,6 +34,15 @@ jobs:
 
       - name: Run tests
         run: xcodebuild clean test -workspace $XCODE_WORKSPACE -scheme $TARGET -destination "platform=iOS Simulator,name=$SIMULATOR,OS=latest"
+    
+    steps:
+      - uses: actions/checkout@master
+      - uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage.xml
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: true
 
   Lint:
     runs-on: ubuntu-latest
